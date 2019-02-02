@@ -1,3 +1,7 @@
+# Keystore
+android/flutter.jks
+android/key.properties
+
 # Miscellaneous
 *.class
 *.lock
