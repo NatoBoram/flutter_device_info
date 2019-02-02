@@ -20,6 +20,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  String _platform = "";
   Map<String, dynamic> _deviceData = <String, dynamic>{};
 
   @override
@@ -28,37 +29,41 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
+  /// Initialize `_deviceData`
   Future<void> initPlatformState() async {
     Map<String, dynamic> deviceData;
+    String platform;
 
     try {
       if (Platform.isAndroid) {
         deviceData = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
+        platform = "Android";
       } else if (Platform.isIOS) {
         deviceData = _readIosDeviceInfo(await deviceInfoPlugin.iosInfo);
+        platform = "iOS";
+      } else {
+        deviceData = <String, dynamic>{"Error": "Invalid Platform"};
       }
     } on PlatformException {
       deviceData = <String, dynamic>{
-        "Error :": "Failed to get platform version."
+        "Error": "Failed to get platform version."
       };
     }
 
+    // Whether this State object is currently in a tree.
     if (!mounted) return;
 
+    // Notify the framework that the internal state of _platform and _deviceData has changed.
     setState(() {
+      _platform = platform;
       _deviceData = deviceData;
     });
   }
 
+  /// Load Android Device Info
   Map<String, dynamic> _readAndroidBuildData(AndroidDeviceInfo build) {
     return <String, dynamic>{
-      "version.securityPatch": build.version.securityPatch,
-      "version.sdkInt": build.version.sdkInt,
-      "version.release": build.version.release,
-      "version.previewSdkInt": build.version.previewSdkInt,
-      "version.incremental": build.version.incremental,
-      "version.codename": build.version.codename,
-      "version.baseOS": build.version.baseOS,
+      "androidId": build.androidId,
       "board": build.board,
       "bootloader": build.bootloader,
       "brand": build.brand,
@@ -68,6 +73,7 @@ class _MyAppState extends State<MyApp> {
       "hardware": build.hardware,
       "host": build.host,
       "id": build.id,
+      "isPhysicalDevice": build.isPhysicalDevice,
       "manufacturer": build.manufacturer,
       "model": build.model,
       "product": build.product,
@@ -76,25 +82,31 @@ class _MyAppState extends State<MyApp> {
       "supportedAbis": build.supportedAbis,
       "tags": build.tags,
       "type": build.type,
-      "isPhysicalDevice": build.isPhysicalDevice,
-      "androidId": build.androidId,
+      "version.baseOS": build.version.baseOS,
+      "version.codename": build.version.codename,
+      "version.incremental": build.version.incremental,
+      "version.previewSdkInt": build.version.previewSdkInt,
+      "version.release": build.version.release,
+      "version.sdkInt": build.version.sdkInt,
+      "version.securityPatch": build.version.securityPatch,
     };
   }
 
+  /// Load iOS Device Info
   Map<String, dynamic> _readIosDeviceInfo(IosDeviceInfo data) {
     return <String, dynamic>{
+      "identifierForVendor": data.identifierForVendor,
+      "isPhysicalDevice": data.isPhysicalDevice,
+      "localizedModel": data.localizedModel,
+      "model": data.model,
       "name": data.name,
       "systemName": data.systemName,
       "systemVersion": data.systemVersion,
-      "model": data.model,
-      "localizedModel": data.localizedModel,
-      "identifierForVendor": data.identifierForVendor,
-      "isPhysicalDevice": data.isPhysicalDevice,
-      "utsname.sysname:": data.utsname.sysname,
+      "utsname.machine:": data.utsname.machine,
       "utsname.nodename:": data.utsname.nodename,
       "utsname.release:": data.utsname.release,
+      "utsname.sysname:": data.utsname.sysname,
       "utsname.version:": data.utsname.version,
-      "utsname.machine:": data.utsname.machine,
     };
   }
 
@@ -103,17 +115,14 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-              Platform.isAndroid ? "Android Device Info" : "iOS Device Info"),
+          title: Text(_platform + " Device Info"),
         ),
         body: ListView(
-          shrinkWrap: true,
           children: _deviceData.keys.map((String property) {
             return ListTile(
               title: Text(property),
               subtitle: Text(
                 "${_deviceData[property]}",
-                overflow: TextOverflow.ellipsis,
               ),
             );
           }).toList(),
