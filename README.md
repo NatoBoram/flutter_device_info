@@ -1,6 +1,6 @@
-# flutter_device_info
+# Flutter Device Info
 
-A new Flutter project.
+Get information about your device in this beautiful Flutter app.
 
 ## Getting Started
 
