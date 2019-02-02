@@ -20,6 +20,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ## [0.0.1] - 2019-02-02
 
+### Added
+
+* Adaptive icon
+
 ### Changed
 
 * Now uses `ListTile`.
