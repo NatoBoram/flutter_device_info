@@ -1,4 +1,4 @@
-package com.example.flutterdeviceinfo
+package com.natoboram.flutterdeviceinfo
 
 import android.os.Bundle
 
