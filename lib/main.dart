@@ -50,6 +50,124 @@ class DeviceDataTile extends StatelessWidget {
   }
 }
 
+class DeviceDataList extends StatelessWidget {
+  DeviceDataList({this.deviceData});
+
+  final deviceData;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        DeviceDataTile(
+          title: "Security Patch",
+          subtitle: deviceData.version.securityPatch,
+        ),
+        DeviceDataTile(
+          title: "SDK",
+          subtitle: deviceData.version.sdkInt.toString(),
+        ),
+        DeviceDataTile(
+          title: "Release",
+          subtitle: deviceData.version.release,
+        ),
+        DeviceDataTile(
+          title: "Preview SDK",
+          subtitle: deviceData.version.previewSdkInt.toString(),
+        ),
+        DeviceDataTile(
+          title: "Incremental",
+          subtitle: deviceData.version.incremental,
+        ),
+        DeviceDataTile(
+          title: "Codename",
+          subtitle: deviceData.version.codename,
+        ),
+        DeviceDataTile(
+          title: "Base OS",
+          subtitle: deviceData.version.baseOS,
+        ),
+        DeviceDataTile(
+          title: "Board",
+          subtitle: deviceData.board,
+        ),
+        DeviceDataTile(
+          title: "Bootloader",
+          subtitle: deviceData.bootloader,
+        ),
+        DeviceDataTile(
+          title: "Brand",
+          subtitle: deviceData.brand,
+        ),
+        DeviceDataTile(
+          title: "Device",
+          subtitle: deviceData.device,
+        ),
+        DeviceDataTile(
+          title: "Display",
+          subtitle: deviceData.display,
+        ),
+        DeviceDataTile(
+          title: "Fingerprint",
+          subtitle: deviceData.fingerprint,
+        ),
+        DeviceDataTile(
+          title: "Hardware",
+          subtitle: deviceData.hardware,
+        ),
+        DeviceDataTile(
+          title: "Host",
+          subtitle: deviceData.host,
+        ),
+        DeviceDataTile(
+          title: "ID",
+          subtitle: deviceData.id,
+        ),
+        DeviceDataTile(
+          title: "Manufacturer",
+          subtitle: deviceData.manufacturer,
+        ),
+        DeviceDataTile(
+          title: "Model",
+          subtitle: deviceData.model,
+        ),
+        DeviceDataTile(
+          title: "Product",
+          subtitle: deviceData.product,
+        ),
+        DeviceDataTile(
+          title: "Supported 32 Bit Abis",
+          subtitle: deviceData.supported32BitAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Supported 64 Bit Abis",
+          subtitle: deviceData.supported64BitAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Supported Abis",
+          subtitle: deviceData.supportedAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Tags",
+          subtitle: deviceData.tags,
+        ),
+        DeviceDataTile(
+          title: "Type",
+          subtitle: deviceData.type,
+        ),
+        DeviceDataTile(
+          title: "Is Physical Device",
+          subtitle: deviceData.isPhysicalDevice.toString(),
+        ),
+        DeviceDataTile(
+          title: "Android ID",
+          subtitle: deviceData.androidId,
+        ),
+      ],
+    );
+  }
+}
+
 class _MyAppState extends State<MyApp> {
   static final deviceInfoPlugin = DeviceInfoPlugin();
   AndroidDeviceInfo _deviceData;
@@ -74,116 +192,9 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text("Android Device Info"),
         ),
-        body: ListView(
-          children: _deviceData != null
-              ? [
-                  DeviceDataTile(
-                    title: "Security Patch",
-                    subtitle: _deviceData.version.securityPatch,
-                  ),
-                  DeviceDataTile(
-                    title: "SDK",
-                    subtitle: _deviceData.version.sdkInt.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Release",
-                    subtitle: _deviceData.version.release,
-                  ),
-                  DeviceDataTile(
-                    title: "Preview SDK",
-                    subtitle: _deviceData.version.previewSdkInt.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Incremental",
-                    subtitle: _deviceData.version.incremental,
-                  ),
-                  DeviceDataTile(
-                    title: "Codename",
-                    subtitle: _deviceData.version.codename,
-                  ),
-                  DeviceDataTile(
-                    title: "Base OS",
-                    subtitle: _deviceData.version.baseOS,
-                  ),
-                  DeviceDataTile(
-                    title: "Board",
-                    subtitle: _deviceData.board,
-                  ),
-                  DeviceDataTile(
-                    title: "Bootloader",
-                    subtitle: _deviceData.bootloader,
-                  ),
-                  DeviceDataTile(
-                    title: "Brand",
-                    subtitle: _deviceData.brand,
-                  ),
-                  DeviceDataTile(
-                    title: "Device",
-                    subtitle: _deviceData.device,
-                  ),
-                  DeviceDataTile(
-                    title: "Display",
-                    subtitle: _deviceData.display,
-                  ),
-                  DeviceDataTile(
-                    title: "Fingerprint",
-                    subtitle: _deviceData.fingerprint,
-                  ),
-                  DeviceDataTile(
-                    title: "Hardware",
-                    subtitle: _deviceData.hardware,
-                  ),
-                  DeviceDataTile(
-                    title: "Host",
-                    subtitle: _deviceData.host,
-                  ),
-                  DeviceDataTile(
-                    title: "ID",
-                    subtitle: _deviceData.id,
-                  ),
-                  DeviceDataTile(
-                    title: "Manufacturer",
-                    subtitle: _deviceData.manufacturer,
-                  ),
-                  DeviceDataTile(
-                    title: "Model",
-                    subtitle: _deviceData.model,
-                  ),
-                  DeviceDataTile(
-                    title: "Product",
-                    subtitle: _deviceData.product,
-                  ),
-                  DeviceDataTile(
-                    title: "Supported 32 Bit Abis",
-                    subtitle: _deviceData.supported32BitAbis.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Supported 64 Bit Abis",
-                    subtitle: _deviceData.supported64BitAbis.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Supported Abis",
-                    subtitle: _deviceData.supportedAbis.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Tags",
-                    subtitle: _deviceData.tags,
-                  ),
-                  DeviceDataTile(
-                    title: "Type",
-                    subtitle: _deviceData.type,
-                  ),
-                  DeviceDataTile(
-                    title: "Is Physical Device",
-                    subtitle: _deviceData.isPhysicalDevice.toString(),
-                  ),
-                  DeviceDataTile(
-                    title: "Android ID",
-                    subtitle: _deviceData.androidId,
-                  ),
-                ]
-              : [Center(child: Text("Loading..."))],
-        ),
+        body: _deviceData != null
+            ? DeviceDataList(deviceData: _deviceData)
+            : [Center(child: Text("Loading..."))],
       ),
     );
   }
