@@ -69,7 +69,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData.light(),
+      // theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
           title: Text("Android Device Info"),
