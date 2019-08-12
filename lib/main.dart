@@ -1,16 +1,9 @@
-import "dart:async";
-import "dart:io";
 import "package:device_info/device_info.dart";
 import "package:flutter/material.dart";
-import "package:flutter/services.dart";
+import 'package:flutter/services.dart';
 
 void main() {
-  runZoned(() {
-    runApp(MyApp());
-  }, onError: (dynamic error, dynamic stack) {
-    print(error);
-    print(stack);
-  });
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -18,119 +11,190 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+class DeviceDataTile extends StatelessWidget {
+  DeviceDataTile({
+    this.icon,
+    @required this.title,
+    @required this.subtitle,
+  });
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: icon != null ? Icon(icon) : null,
+      title: Text(title),
+      subtitle: Text(subtitle),
+      onTap: () {
+        Clipboard.setData(new ClipboardData(text: "$title : $subtitle"));
+
+        Scaffold.of(context).hideCurrentSnackBar();
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: ListTile(
+              leading: Icon(Icons.content_copy),
+              title: Text("Copied"),
+              subtitle: Text("$title : $subtitle"),
+            ),
+            action: SnackBarAction(
+              label: "Ok",
+              onPressed: Scaffold.of(context).hideCurrentSnackBar,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class DeviceDataList extends StatelessWidget {
+  DeviceDataList({this.deviceData});
+
+  final deviceData;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        DeviceDataTile(
+          title: "Security Patch",
+          subtitle: deviceData.version.securityPatch,
+        ),
+        DeviceDataTile(
+          title: "SDK",
+          subtitle: deviceData.version.sdkInt.toString(),
+        ),
+        DeviceDataTile(
+          title: "Release",
+          subtitle: deviceData.version.release,
+        ),
+        DeviceDataTile(
+          title: "Preview SDK",
+          subtitle: deviceData.version.previewSdkInt.toString(),
+        ),
+        DeviceDataTile(
+          title: "Incremental",
+          subtitle: deviceData.version.incremental,
+        ),
+        DeviceDataTile(
+          title: "Codename",
+          subtitle: deviceData.version.codename,
+        ),
+        DeviceDataTile(
+          title: "Base OS",
+          subtitle: deviceData.version.baseOS,
+        ),
+        DeviceDataTile(
+          title: "Board",
+          subtitle: deviceData.board,
+        ),
+        DeviceDataTile(
+          title: "Bootloader",
+          subtitle: deviceData.bootloader,
+        ),
+        DeviceDataTile(
+          title: "Brand",
+          subtitle: deviceData.brand,
+        ),
+        DeviceDataTile(
+          title: "Device",
+          subtitle: deviceData.device,
+        ),
+        DeviceDataTile(
+          title: "Display",
+          subtitle: deviceData.display,
+        ),
+        DeviceDataTile(
+          title: "Fingerprint",
+          subtitle: deviceData.fingerprint,
+        ),
+        DeviceDataTile(
+          title: "Hardware",
+          subtitle: deviceData.hardware,
+        ),
+        DeviceDataTile(
+          title: "Host",
+          subtitle: deviceData.host,
+        ),
+        DeviceDataTile(
+          title: "ID",
+          subtitle: deviceData.id,
+        ),
+        DeviceDataTile(
+          title: "Manufacturer",
+          subtitle: deviceData.manufacturer,
+        ),
+        DeviceDataTile(
+          title: "Model",
+          subtitle: deviceData.model,
+        ),
+        DeviceDataTile(
+          title: "Product",
+          subtitle: deviceData.product,
+        ),
+        DeviceDataTile(
+          title: "Supported 32 Bit Abis",
+          subtitle: deviceData.supported32BitAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Supported 64 Bit Abis",
+          subtitle: deviceData.supported64BitAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Supported Abis",
+          subtitle: deviceData.supportedAbis.toString(),
+        ),
+        DeviceDataTile(
+          title: "Tags",
+          subtitle: deviceData.tags,
+        ),
+        DeviceDataTile(
+          title: "Type",
+          subtitle: deviceData.type,
+        ),
+        DeviceDataTile(
+          title: "Is Physical Device",
+          subtitle: deviceData.isPhysicalDevice.toString(),
+        ),
+        DeviceDataTile(
+          title: "Android ID",
+          subtitle: deviceData.androidId,
+        ),
+      ],
+    );
+  }
+}
+
 class _MyAppState extends State<MyApp> {
-  static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
-  String _platform = "";
-  Map<String, dynamic> _deviceData = <String, dynamic>{};
+  static final deviceInfoPlugin = DeviceInfoPlugin();
+  AndroidDeviceInfo _deviceData;
 
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    initDeviceData();
   }
 
-  /// Initialize `_deviceData`
-  Future<void> initPlatformState() async {
-    Map<String, dynamic> deviceData;
-    String platform;
-
-    try {
-      if (Platform.isAndroid) {
-        deviceData = _readAndroidBuildData(await deviceInfoPlugin.androidInfo);
-        platform = "Android";
-      } else if (Platform.isIOS) {
-        deviceData = _readIosDeviceInfo(await deviceInfoPlugin.iosInfo);
-        platform = "iOS";
-      } else {
-        deviceData = <String, dynamic>{"Error": "Invalid Platform"};
-      }
-    } on PlatformException {
-      deviceData = <String, dynamic>{
-        "Error": "Failed to get platform version."
-      };
-    }
-
-    // Whether this State object is currently in a tree.
+  initDeviceData() async {
+    _deviceData = await deviceInfoPlugin.androidInfo;
     if (!mounted) return;
-
-    // Notify the framework that the internal state of _platform and _deviceData has changed.
-    setState(() {
-      _platform = platform;
-      _deviceData = deviceData;
-    });
-  }
-
-  /// Load Android Device Info
-  Map<String, dynamic> _readAndroidBuildData(AndroidDeviceInfo build) {
-    return <String, dynamic>{
-      'version.securityPatch': build.version.securityPatch,
-      'version.sdkInt': build.version.sdkInt,
-      'version.release': build.version.release,
-      'version.previewSdkInt': build.version.previewSdkInt,
-      'version.incremental': build.version.incremental,
-      'version.codename': build.version.codename,
-      'version.baseOS': build.version.baseOS,
-      'board': build.board,
-      'bootloader': build.bootloader,
-      'brand': build.brand,
-      'device': build.device,
-      'display': build.display,
-      'fingerprint': build.fingerprint,
-      'hardware': build.hardware,
-      'host': build.host,
-      'id': build.id,
-      'manufacturer': build.manufacturer,
-      'model': build.model,
-      'product': build.product,
-      'supported32BitAbis': build.supported32BitAbis,
-      'supported64BitAbis': build.supported64BitAbis,
-      'supportedAbis': build.supportedAbis,
-      'tags': build.tags,
-      'type': build.type,
-      'isPhysicalDevice': build.isPhysicalDevice,
-      'androidId': build.androidId,
-    };
-  }
-
-  /// Load iOS Device Info
-  Map<String, dynamic> _readIosDeviceInfo(IosDeviceInfo data) {
-    return <String, dynamic>{
-      'name': data.name,
-      'systemName': data.systemName,
-      'systemVersion': data.systemVersion,
-      'model': data.model,
-      'localizedModel': data.localizedModel,
-      'identifierForVendor': data.identifierForVendor,
-      'isPhysicalDevice': data.isPhysicalDevice,
-      'utsname.sysname:': data.utsname.sysname,
-      'utsname.nodename:': data.utsname.nodename,
-      'utsname.release:': data.utsname.release,
-      'utsname.version:': data.utsname.version,
-      'utsname.machine:': data.utsname.machine,
-    };
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData.light(),
+      // theme: ThemeData.dark(),
       home: Scaffold(
         appBar: AppBar(
-          title: Text(_platform + " Device Info"),
+          title: Text("Android Device Info"),
         ),
-        body: ListView(
-          children: _deviceData.keys.map((String property) {
-            return ListTile(
-              title: Text(property),
-              subtitle: Text(
-                "${_deviceData[property]}",
-              ),
-              onTap: () {
-                
-              },
-            );
-          }).toList(),
-        ),
+        body: _deviceData != null
+            ? DeviceDataList(deviceData: _deviceData)
+            : [Center(child: Text("Loading..."))],
       ),
     );
   }

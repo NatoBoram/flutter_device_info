@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
+## [1.0.0]
 
 ### Added
 
@@ -19,6 +19,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Fixed
 
 ### Security
+
+## [1.0.0] - 2019-08-12
+
+### Added
+
+* Tap on a tile to copy it!
+
+### Changed
+
+* `compileSdkVersion` and `targetSdkVersion` are now `29`.
+
+### Removed
+
+* iOS Support
+
+It's way too expensive to publish on the iOS Store. It requires a MacOS machine, which costs *at least* 1 K$, which I don't have, and a developer license of 100 $/years, which I'm not going to spend for an open source app.
+
+You are free to fork this project and publish on the iOS Store according to the GNU GPL v3.
 
 ## [0.0.1] - 2019-02-02
 
