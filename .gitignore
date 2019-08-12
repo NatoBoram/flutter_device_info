@@ -2,6 +2,9 @@
 android/flutter.jks
 android/key.properties
 
+# Drop iOS Support
+/ios
+
 # Miscellaneous
 *.class
 *.lock
