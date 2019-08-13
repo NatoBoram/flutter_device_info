@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Security
 
-## [1.0.1]
+## [1.0.1] - 2019-08-12
 
 ### Changed
 
