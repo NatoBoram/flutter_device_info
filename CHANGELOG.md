@@ -4,13 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.0.0]
+## [Unreleased]
 
 ### Added
 
 ### Changed
-
-* `compileSdkVersion` and `targetSdkVersion` are now `29`.
 
 ### Deprecated
 
@@ -19,6 +17,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 ### Fixed
 
 ### Security
+
+## [1.0.1]
+
+### Changed
+
+* Switched to `AndroidX`
+* Added `shrinkResources true`
+
+### Fixed
+
+* Fixed `minifyEnabled true`
 
 ## [1.0.0] - 2019-08-12
 
