@@ -86,8 +86,8 @@ flutter {
 }
 
 dependencies {
-	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-	testImplementation 'junit:junit:4.12'
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 	androidTestImplementation 'androidx.test:runner:1.1.1'
 	androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
