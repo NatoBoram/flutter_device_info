@@ -1,0 +1,16 @@
+{
+  "[json]": {
+    "editor.rulers": []
+  },
+  "[jsonc]": {
+    "editor.rulers": []
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    80
+  ],
+}

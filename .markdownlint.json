@@ -1,5 +1,4 @@
 {
-	"line-length": false,
-	"no-hard-tabs": false,
-	"no-duplicate-header": false
+  "line_length": true,
+  "no-duplicate-header": false
 }
