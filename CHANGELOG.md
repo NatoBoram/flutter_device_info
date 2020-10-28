@@ -11,11 +11,15 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Pubspec name is now `flutterdeviceinfo`.
+
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Label is now "Device Info" instead of "flutterdeviceinfo".
 
 ### Security
 
