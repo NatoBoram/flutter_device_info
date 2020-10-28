@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final deviceInfoPlugin = DeviceInfoPlugin();
+
   AndroidDeviceInfo _deviceData;
 
   @override

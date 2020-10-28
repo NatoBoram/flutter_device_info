@@ -5,12 +5,14 @@
   "[jsonc]": {
     "editor.rulers": []
   },
+  "dart.previewLsp": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.organizeImports": true
+    "source.organizeImports": true,
+    "source.sortMembers": true
   },
   "editor.formatOnSave": true,
   "editor.rulers": [
     80
-  ],
+  ]
 }

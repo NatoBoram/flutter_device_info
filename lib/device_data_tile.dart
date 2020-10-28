@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 
 class DeviceDataTile extends StatelessWidget {
   final IconData icon;
-
   final String title;
   final String subtitle;
+
   DeviceDataTile({
     this.icon,
     @required this.title,
