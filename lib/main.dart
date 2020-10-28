@@ -1,6 +1,7 @@
-import "package:device_info/device_info.dart";
-import "package:flutter/material.dart";
-import 'package:flutter_device_info/device_data_list.dart';
+import 'package:device_info/device_info.dart';
+import 'package:flutter/material.dart';
+
+import 'device_data_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  initDeviceData() async {
+  void initDeviceData() async {
     _deviceData = await deviceInfoPlugin.androidInfo;
     if (!mounted) return;
     setState(() {});

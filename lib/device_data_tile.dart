@@ -1,4 +1,4 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class DeviceDataTile extends StatelessWidget {
@@ -19,7 +19,7 @@ class DeviceDataTile extends StatelessWidget {
       title: Text(title),
       subtitle: Text(subtitle),
       onTap: () {
-        Clipboard.setData(new ClipboardData(text: "$title : $subtitle"));
+        Clipboard.setData(ClipboardData(text: "$title : $subtitle"));
 
         ScaffoldMessenger.of(context).hideCurrentSnackBar();
         ScaffoldMessenger.of(context).showSnackBar(
