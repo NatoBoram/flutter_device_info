@@ -1,8 +1,10 @@
-import "package:flutter/material.dart";
-import 'package:flutter_device_info/device_data_tile.dart';
+import 'package:device_info/device_info.dart';
+import 'package:flutter/material.dart';
+
+import 'device_data_tile.dart';
 
 class DeviceDataList extends StatelessWidget {
-  final deviceData;
+  final AndroidDeviceInfo deviceData;
 
   DeviceDataList({this.deviceData});
 

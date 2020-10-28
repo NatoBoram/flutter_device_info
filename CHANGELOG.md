@@ -9,11 +9,7 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Dark theme
-
 ### Changed
-
-- Updated Android dependencies
 
 ### Deprecated
 
@@ -22,6 +18,16 @@ project adheres to [Semantic Versioning](https://semver.org/).
 ### Fixed
 
 ### Security
+
+## [1.0.2] - 2020-10-27
+
+### Added
+
+- Dark theme
+
+### Changed
+
+- Update Android dependencies
 
 ## [1.0.1] - 2019-08-12
 

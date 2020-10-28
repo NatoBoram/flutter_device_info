@@ -7,7 +7,7 @@ description: Get information about your device in this beautiful Flutter app.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
 # Read more about versioning at semver.org.
-version: 1.0.1+4
+version: 1.0.2+5
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -20,6 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  effective_dart: ^1.2.4
   flutter_launcher_icons: ^0.8.1
 
 # For information on the generic Dart part of this file, see the
