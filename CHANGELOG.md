@@ -2,13 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/), and this project adheres to [Semantic Versioning](https://semver.org/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
+project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
 ### Added
 
+- Dark theme
+
 ### Changed
+
+- Updated Android dependencies
 
 ### Deprecated
 
@@ -22,47 +27,50 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/), and this
 
 ### Changed
 
-* Switched to `AndroidX`
-* Added `shrinkResources true`
+- Switched to `AndroidX`
+- Added `shrinkResources true`
 
 ### Fixed
 
-* Fixed `minifyEnabled true`
+- Fixed `minifyEnabled true`
 
 ## [1.0.0] - 2019-08-12
 
 ### Added
 
-* Tap on a tile to copy it!
+- Tap on a tile to copy it!
 
 ### Changed
 
-* `compileSdkVersion` and `targetSdkVersion` are now `29`.
+- `compileSdkVersion` and `targetSdkVersion` are now `29`.
 
 ### Removed
 
-* iOS Support
+- iOS Support
 
-It's way too expensive to publish on the iOS Store. It requires a MacOS machine, which costs *at least* 1 K$, which I don't have, and a developer license of 100 $/years, which I'm not going to spend for an open source app.
+It's way too expensive to publish on the iOS Store. It requires a MacOS machine,
+which costs _at least_ 1 K$, which I don't have, and a developer license of 100$
+/ years, which I'm not going to spend for an open source app.
 
-You are free to fork this project and publish on the iOS Store according to the GNU GPL v3.
+You are free to fork this project and publish on the iOS Store according to the
+GNU GPL v3.
 
 ## [0.0.1] - 2019-02-02
 
 ### Added
 
-* Adaptive icon
+- Adaptive icon
 
 ### Changed
 
-* Now uses `ListTile`.
-* `compileSdkVersion` and `targetSdkVersion` are now `28`.
+- Now uses `ListTile`.
+- `compileSdkVersion` and `targetSdkVersion` are now `28`.
 
 ### Types of changes
 
-* `Added` for new features.
-* `Changed` for changes in existing functionality.
-* `Deprecated` for soon-to-be removed features.
-* `Removed` for now removed features.
-* `Fixed` for any bug fixes.
-* `Security` in case of vulnerabilities.
+- `Added` for new features.
+- `Changed` for changes in existing functionality.
+- `Deprecated` for soon-to-be removed features.
+- `Removed` for now removed features.
+- `Fixed` for any bug fixes.
+- `Security` in case of vulnerabilities.
