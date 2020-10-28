@@ -12,13 +12,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  static final deviceInfoPlugin = DeviceInfoPlugin();
+  final deviceInfoPlugin = DeviceInfoPlugin();
   AndroidDeviceInfo _deviceData;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // theme: ThemeData.dark(),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       home: ScaffoldMessenger(
         child: Scaffold(
           appBar: AppBar(
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
           ),
           body: _deviceData != null
               ? DeviceDataList(deviceData: _deviceData)
-              : [Center(child: Text("Loading..."))],
+              : Center(child: Text("Loading...")),
         ),
       ),
     );
