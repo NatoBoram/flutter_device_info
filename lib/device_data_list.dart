@@ -92,15 +92,15 @@ class DeviceDataList extends StatelessWidget {
             subtitle: deviceData.product,
           ),
           DeviceDataTile(
-            title: 'Supported 32 Bit Abis',
+            title: 'Supported 32 Bit ABIs',
             subtitle: deviceData.supported32BitAbis.toString(),
           ),
           DeviceDataTile(
-            title: 'Supported 64 Bit Abis',
+            title: 'Supported 64 Bit ABIs',
             subtitle: deviceData.supported64BitAbis.toString(),
           ),
           DeviceDataTile(
-            title: 'Supported Abis',
+            title: 'Supported ABIs',
             subtitle: deviceData.supportedAbis.toString(),
           ),
           DeviceDataTile(
