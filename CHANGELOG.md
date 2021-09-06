@@ -19,9 +19,11 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
-- Label is now "Device Info" instead of "flutterdeviceinfo".
+- Label is now `Device Info` instead of `flutterdeviceinfo`.
 
 ### Security
+
+- Upgraded to Null Safety
 
 ## [1.0.2] - 2020-10-27
 
