@@ -19,6 +19,21 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Security
 
+## [1.0.3] - 2021-09-05
+
+### Changed
+
+- Pubspec name is now `flutterdeviceinfo`.
+
+### Fixed
+
+- Label is now `Device Info` instead of `flutterdeviceinfo`.
+- Fixed a bug on snackbars that's on Flutter's side.
+
+### Security
+
+- Upgraded to Null Safety
+
 ## [1.0.2] - 2020-10-27
 
 ### Added
